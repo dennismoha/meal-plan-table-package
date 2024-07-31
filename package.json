@@ -1,13 +1,9 @@
 {
-  "name": "meal-plan-material-reat-table",
-  "private": true,
+  "name": "@dennismoha/meal-plan-material-reat-table",
   "version": "0.0.1",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "rollup": "rollup -c  --bundleConfigAsCjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
     "prepare": "husky",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json,scss} --config ./.prettierrc"
@@ -18,11 +14,13 @@
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
     "@mui/x-date-pickers": "^7.11.1",
-    "material-react-table": "^2.13.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "material-react-table": "^2.13.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -35,11 +33,29 @@
     "husky": "^4.3.8",
     "lint-staged": "^15.2.7",
     "prettier": "3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rollup": "^4.19.1",
+    "rollup-plugin-dts": "^6.1.1",
+    "tslib": "^2.6.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
   },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "main": "dist/cjs/main.js",
+  "module": "dist/esm/main.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/main.d.ts",
   "lint-staged": {
     "./src/*": "prettier --write",
     "./src/*.tsx": "eslint"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.com/dennismoha"
   }
 }
