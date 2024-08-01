@@ -22,6 +22,7 @@ export default [
     ],
     plugins: [resolve(), commonjs(), typescript({ tsconfig: './tsconfig.app.json' })],
   },
+
   {
     input: 'dist/esm/types/main.d.ts',
     output: [{ file: 'dist/main.d.ts', format: 'esm' }],
