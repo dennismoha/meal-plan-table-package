@@ -65,8 +65,8 @@
   ],
   "types": "dist/main.d.ts",
   "lint-staged": {
-    "./src/*": "prettier --write",
-    "./src/*.tsx": "eslint"
+    "./src/**/*": "prettier --write",
+    "./src/**/*.tsx": "eslint --fix"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.com/dennismoha"
