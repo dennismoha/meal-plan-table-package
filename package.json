@@ -1,6 +1,6 @@
 {
   "name": "@dennismoha/meal-plan-material-reat-table",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "rollup": "rollup -c  --bundleConfigAsCjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
