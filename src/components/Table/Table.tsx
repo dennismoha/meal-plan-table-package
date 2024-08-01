@@ -150,10 +150,13 @@ interface MealplanProps {
 }
 
 const MealPlanTable: React.FC<MealplanProps> = ({ mealPlans = defaultMealPlans }) => {
-  const [currentMealPlanKey, setCurrentMealPlanKey] = useState<any>();
+  const [currentMealPlanKey, setCurrentMealPlanKey] = useState<string | undefined>();
+
   useEffect(() => {
-    setCurrentMealPlanKey(mealPlans[0].mealplankey);
-  }, []);
+    if (mealPlans.length > 0) {
+      setCurrentMealPlanKey(mealPlans[0].mealplankey);
+    }
+  }, [mealPlans]);
 
   const handleToggle = (key: string) => {
     console.log('key', key);
