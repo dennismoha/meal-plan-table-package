@@ -1,16 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Button,
-  ButtonGroup,
-} from '@mui/material';
-
 export interface MealPlan {
   mealplankey: string;
   idmealPlanWeek: number;
@@ -27,7 +14,7 @@ export interface MealPlan {
   };
 }
 // Example data
-const defaultMealPlans: MealPlan[] = [
+export const defaultMealPlans: MealPlan[] = [
   {
     mealplankey: 'week2',
     idmealPlanWeek: 2,
@@ -144,69 +131,3 @@ const defaultMealPlans: MealPlan[] = [
     },
   },
 ];
-
-interface MealplanProps {
-  mealPlans?: MealPlan[];
-}
-
-const MealPlanTable: React.FC<MealplanProps> = ({ mealPlans = defaultMealPlans }) => {
-  const [currentMealPlanKey, setCurrentMealPlanKey] = useState<string | undefined>();
-
-  useEffect(() => {
-    if (mealPlans.length > 0) {
-      setCurrentMealPlanKey(mealPlans[0].mealplankey);
-    }
-  }, [mealPlans]);
-
-  const handleToggle = (key: string) => {
-    console.log('key', key);
-    setCurrentMealPlanKey(key);
-  };
-
-  const currentMealPlan = mealPlans.find((mealPlan) => mealPlan.mealplankey === currentMealPlanKey);
-
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-  return (
-    <div>
-      <ButtonGroup variant='contained' aria-label='outlined primary button group'>
-        {mealPlans.map((mealPlan) => (
-          <Button key={mealPlan.mealplankey} onClick={() => handleToggle(mealPlan.mealplankey)}>
-            {mealPlan.mealplankey}
-          </Button>
-        ))}
-      </ButtonGroup>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Day</TableCell>
-              <TableCell>Breakfast</TableCell>
-              <TableCell>Morning Break</TableCell>
-              <TableCell>Lunch</TableCell>
-              <TableCell>Evening Break</TableCell>
-              <TableCell>Supper</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {daysOfWeek.map((day) => {
-              const mealPlan = currentMealPlan?.data.daysOfWeek[day];
-              return (
-                <TableRow key={day}>
-                  <TableCell>{day}</TableCell>
-                  <TableCell>{mealPlan ? mealPlan.breakfast : '-'}</TableCell>
-                  <TableCell>{mealPlan ? mealPlan.morning_break : '-'}</TableCell>
-                  <TableCell>{mealPlan ? mealPlan.lunch : '-'}</TableCell>
-                  <TableCell>{mealPlan ? mealPlan.evening_break : '-'}</TableCell>
-                  <TableCell>{mealPlan ? mealPlan.supper : '-'}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
-  );
-};
-
-export default MealPlanTable;

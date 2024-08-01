@@ -1,35 +1,33 @@
-# React + TypeScript + Vite
+Here's a clearer version of the `README.md` documentation:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Documentation
 
-Currently, two official plugins are available:
+## Build Tool
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Tool Used**: This project uses **Vite** as the build tool and **TypeScript** for development.
 
-## Expanding the ESLint configuration
+## Preview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Storybook**: To preview the project using Storybook, run the following command:
+  ```bash
+  npm run storybook
+  ```
 
-- Configure the top-level `parserOptions` property like this:
+## Build
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. **Build the Package**: Before publishing, ensure you build the package by running:
+   ```bash
+   npm run rollup
+   ```
+2. **Publish the Package**: After building, publish the package to the npm registry with:
+   ```bash
+   npm publish
+   ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Lint-Staged
 
-
-
-# lint staged
- - Run this command to lint every staged file that has been updated before a commit. `npx lint-staged`
+- **Code Linting**: We use **Husky** and **Lint-Staged** to automatically lint code before each commit.
+- **Command**: To lint every staged file that has been updated before a commit, use:
+  ```bash
+  npx lint-staged
+  ```
